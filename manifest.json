@@ -1,0 +1,21 @@
+{
+  "name": "TRANS PE - Transporte de Materiais",
+  "short_name": "TRANS PE",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#1976d2",
+  "theme_color": "#1976d2",
+  "description": "Recibo de transporte de materiais para motoristas.",
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "img/logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+} 

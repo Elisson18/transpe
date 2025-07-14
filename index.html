@@ -9,13 +9,15 @@
   <!-- FontAwesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
   <header class="logo-header">
-    <h1 class="logo">TRANS <span>PE</span></h1>
+    <img src="img/logo.png" alt="Logo TRANS PE" style="height: 120px;" class="logo-img" />
+    <span class="logo-text" style="display:none; font-size:2.2rem; font-weight:700; color:#1976d2;">Trans <span style='color:#1565c0'>PE</span></span>
   </header>
 
-  <main>
+  <main style="margin-top: 0;">
     <section class="section" id="materiais-section">
       <h2><i class="fa-solid fa-cubes"></i> Materiais</h2>
       <div class="options-list" id="materiais-list"></div>
@@ -59,24 +61,34 @@
       </form>
     </section>
 
-    <!-- Botão Visualizar Recibo -->
-    <div class="pdf-btn-container">
-      <button id="visualizar-recibo-btn" type="button"><i class="fa-solid fa-eye"></i> Visualizar Recibo</button>
-    </div>
-    <!-- Preview do Recibo -->
-    <div id="recibo-preview-container" style="display:none;">
+    <!-- Preview do Recibo sempre visível -->
+    <div id="recibo-preview-container" style="display:block;">
+      <!-- Mensagem de erro de validação -->
+      <div id="mensagem-erro" style="display:none; color:#c62828; background:#fff3f3; border:1.5px solid #c62828; border-radius:10px; padding:0.8em 1.2em; font-size:1.1rem; font-weight:600; margin: 1em 0; text-align:center;">
+        <span style="font-size:1.3em; vertical-align:middle; margin-right:0.5em;">&#9888;&#65039;</span>
+        <span id="mensagem-erro-texto">Preencha os campos obrigatórios!</span>
+      </div>
       <div id="recibo-preview" style="background:#fff; color:#222; padding:20px; margin:20px 0; max-width:480px; border-radius:12px; box-shadow:0 2px 8px rgba(25,118,210,0.08);"></div>
       <div class="pdf-btn-container" style="gap: 1rem;">
         <button id="gerar-pdf-btn" type="button"><i class="fa-solid fa-file-pdf"></i> Gerar PDF</button>
         <button id="compartilhar-pdf-btn" type="button"><i class="fa-solid fa-share-nodes"></i> Compartilhar</button>
       </div>
     </div>
+    <!-- Mensagem de confirmação visual -->
+    <div id="mensagem-confirmacao" style="display:none; position:fixed; top:24px; left:50%; transform:translateX(-50%); background:#1976d2; color:#fff; font-size:1.2rem; font-weight:600; padding:1rem 2.5rem; border-radius:12px; box-shadow:0 2px 8px rgba(25,118,210,0.12); z-index:9999; text-align:center;">Recibo gerado com sucesso!</div>
   </main>
 
   <!-- Scripts -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
   <script src="script.js"></script>
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', function() {
+        navigator.serviceWorker.register('service-worker.js');
+      });
+    }
+  </script>
 </body>
 </html>
 

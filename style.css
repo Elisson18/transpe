@@ -8,7 +8,8 @@ body {
 
 .logo-header {
   background: #fff;
-  padding: 2.5rem 0 0.7rem 0;
+  padding: 0.5rem 0 0.3rem 0;
+  margin: 0;
   text-align: center;
   position: relative;
   z-index: 2;
@@ -25,9 +26,11 @@ body {
 }
 
 main {
-  padding: 1.2rem 0.7rem 2rem 0.7rem;
+  padding: 0.3rem 0.7rem 2rem 0.7rem;
   max-width: 480px;
   margin: 0 auto;
+  position: relative;
+  z-index: 3;
 }
 
 .section {
@@ -188,6 +191,76 @@ main {
   background: #2e7d32;
 }
 
+.option-btn:active,
+#gerar-pdf-btn:active,
+#visualizar-recibo-btn:active,
+#compartilhar-pdf-btn:active {
+  filter: brightness(0.93);
+  box-shadow: 0 2px 8px rgba(25,118,210,0.18);
+  transition: filter 0.1s, box-shadow 0.1s;
+}
+
+/* Estilo do preview do recibo */
+#recibo-preview {
+  background: #fff;
+  color: #222;
+  padding: 20px;
+  margin: 20px 0;
+  max-width: 480px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(25,118,210,0.08);
+}
+.recibo-header {
+  text-align: center;
+  margin-top: 32px;
+  margin-bottom: 18px;
+}
+.recibo-header-title {
+  font-size: 2.1rem;
+  color: #1976d2;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+.recibo-header-title span {
+  color: #1565c0;
+}
+.recibo-chip {
+  display: inline-block;
+  margin: 2px 8px 2px 0;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #e3f0fd;
+  color: #1976d2;
+  font-weight: 500;
+}
+.recibo-chip-transporte {
+  display: inline-block;
+  margin: 2px 0;
+  padding: 4px 10px;
+  border-radius: 8px;
+  background: #e3f0fd;
+  color: #1976d2;
+  font-weight: 500;
+}
+.recibo-label {
+  margin-bottom: 10px;
+}
+.recibo-assinatura {
+  width: 220px;
+  margin-top: 8px;
+  text-align: center;
+}
+.recibo-assinatura-nome {
+  font-size: 1.1rem;
+  color: #1976d2;
+}
+.recibo-assinatura-linha {
+  border-bottom: 2px solid #b0bec5;
+  width: 100%;
+  height: 32px;
+  margin-top: 2px;
+}
+
 /* Responsividade */
 @media (max-width: 600px) {
   .logo {
@@ -203,6 +276,57 @@ main {
   #gerar-pdf-btn {
     font-size: 1rem;
     padding: 0.8rem 1.2rem;
+  }
+}
+
+/* Layout responsivo para modo paisagem (landscape) */
+@media (orientation: landscape) and (max-height: 500px) {
+  main {
+    max-width: 1000px;
+    display: flex;
+    flex-direction: row;
+    gap: 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 1rem;
+  }
+  #materiais-section, #transporte-section, #info-section {
+    width: 100%;
+    margin-bottom: 0;
+  }
+  #materiais-section, #transporte-section {
+    max-width: 340px;
+  }
+  #info-section {
+    max-width: 420px;
+  }
+  .section {
+    margin-bottom: 0;
+  }
+  #info-form {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.2rem 2rem;
+  }
+  #info-form label {
+    width: 45%;
+    min-width: 180px;
+  }
+  #info-form label[name='assinatura'] {
+    width: 100%;
+  }
+  .logo-header {
+    text-align: center;
+  }
+  .logo-img {
+    display: none !important;
+  }
+  .logo-text {
+    display: inline-block !important;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #1976d2;
+    margin-top: 0.2em;
   }
 }
 
