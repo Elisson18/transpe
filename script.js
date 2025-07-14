@@ -203,9 +203,11 @@ if (btnPDF) {
   btnPDF.addEventListener('click', () => {
     if (!validarCamposObrigatorios()) return;
     gerarPDF();
-    limparFormulario();
     esconderPreview();
     mostrarMensagemConfirmacao();
+    setTimeout(() => {
+      document.getElementById('recibo-preview-container').style.display = 'block';
+    }, 2000);
   });
 }
 
@@ -244,9 +246,11 @@ if (btnCompartilhar) {
   btnCompartilhar.addEventListener('click', () => {
     if (!validarCamposObrigatorios()) return;
     compartilharPDF();
-    limparFormulario();
     esconderPreview();
     mostrarMensagemConfirmacao('Recibo compartilhado com sucesso!');
+    setTimeout(() => {
+      document.getElementById('recibo-preview-container').style.display = 'block';
+    }, 2000);
   });
 }
 
