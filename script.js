@@ -104,6 +104,10 @@ function montarPreviewRecibo() {
   `;
 }
 
+function isMobile() {
+  return /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|Mobile/i.test(navigator.userAgent);
+}
+
 function gerarPDF() {
   const dados = coletarDados();
   const nomeCliente = (dados.cliente || 'cliente').toLowerCase().replace(/[^a-z0-9]+/g, '_');
@@ -123,7 +127,11 @@ function gerarPDF() {
       pdfWidth = (imgProps.width / imgProps.height) * pdfHeight;
     }
     pdf.addImage(imgData, 'PNG', 10, 10, pdfWidth, pdfHeight);
-    pdf.save(nomeArquivo);
+    if (isMobile()) {
+      pdf.output('dataurlnewwindow');
+    } else {
+      pdf.save(nomeArquivo);
+    }
   });
 }
 
