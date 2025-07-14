@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TRANS PE - Transporte de Materiais</title>
+  <!-- Fonte Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap" rel="stylesheet" />
+  <!-- FontAwesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="logo-header">
+    <h1 class="logo">TRANS <span>PE</span></h1>
+  </header>
+
+  <main>
+    <section class="section" id="materiais-section">
+      <h2><i class="fa-solid fa-cubes"></i> Materiais</h2>
+      <div class="options-list" id="materiais-list"></div>
+    </section>
+
+    <section class="section" id="transporte-section">
+      <h2><i class="fa-solid fa-truck"></i> Transporte</h2>
+      <div class="options-list" id="transporte-list"></div>
+    </section>
+
+    <section class="section" id="info-section">
+      <h2><i class="fa-solid fa-clipboard-list"></i> Informações</h2>
+      <form id="info-form">
+        <label>Obra:
+          <input type="text" name="obra" required />
+        </label>
+        <label>Cubagem (m³):
+          <input type="number" name="cubagem" min="0" step="0.1" required />
+        </label>
+        <label>Nome do Motorista:
+          <input type="text" name="motorista" required />
+        </label>
+        <label>Nome do Cliente:
+          <input type="text" name="cliente" required />
+        </label>
+        <label>Endereço da Entrega:
+          <input type="text" name="endereco" required />
+        </label>
+        <label>Telefone do Cliente:
+          <input type="tel" name="telefone" required pattern="[0-9\-\(\) ]+" />
+        </label>
+        <label>Placa do Veículo:
+          <input type="text" name="placa" required />
+        </label>
+        <label>Data:
+          <input type="date" name="data" required />
+        </label>
+        <label>Assinatura do Cliente (opcional):
+          <input type="text" name="assinatura" placeholder="Digite o nome ou deixe em branco" />
+        </label>
+      </form>
+    </section>
+
+    <!-- Botão Visualizar Recibo -->
+    <div class="pdf-btn-container">
+      <button id="visualizar-recibo-btn" type="button"><i class="fa-solid fa-eye"></i> Visualizar Recibo</button>
+    </div>
+    <!-- Preview do Recibo -->
+    <div id="recibo-preview-container" style="display:none;">
+      <div id="recibo-preview" style="background:#fff; color:#222; padding:20px; margin:20px 0; max-width:480px; border-radius:12px; box-shadow:0 2px 8px rgba(25,118,210,0.08);"></div>
+      <div class="pdf-btn-container" style="gap: 1rem;">
+        <button id="gerar-pdf-btn" type="button"><i class="fa-solid fa-file-pdf"></i> Gerar PDF</button>
+        <button id="compartilhar-pdf-btn" type="button"><i class="fa-solid fa-share-nodes"></i> Compartilhar</button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
+
