@@ -123,7 +123,8 @@ function gerarPDF() {
       pdfWidth = (imgProps.width / imgProps.height) * pdfHeight;
     }
     pdf.addImage(imgData, 'PNG', 10, 10, pdfWidth, pdfHeight);
-    pdf.save(nomeArquivo);
+    pdf.output('dataurlnewwindow');
+    // pdf.save(nomeArquivo); // Removido para abrir em nova aba
   });
 }
 
