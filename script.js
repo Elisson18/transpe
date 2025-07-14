@@ -150,6 +150,10 @@ if (btnPDF) {
   btnPDF.addEventListener('click', gerarPDF);
 }
 
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
 // Função para compartilhar o PDF (apenas em navegadores que suportam navigator.share)
 function compartilharPDF() {
   const dados = coletarDados();
@@ -171,19 +175,20 @@ function compartilharPDF() {
       pdfWidth = (imgProps.width / imgProps.height) * pdfHeight;
     }
     pdf.addImage(imgData, 'PNG', 10, 10, pdfWidth, pdfHeight);
-    // Gera o blob do PDF
-    pdf.output('blob').then(blob => {
-      const file = new File([blob], nomeArquivo, { type: 'application/pdf' });
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share({
-          files: [file],
-          title: 'Recibo TRANS PE',
-          text: 'Segue o recibo em PDF.'
-        });
-      } else {
-        alert('Seu navegador não suporta compartilhamento direto de arquivos. O PDF foi salvo, envie manualmente pelo WhatsApp.');
-      }
-    });
+    // Gera o blob do PDF de forma síncrona
+    const pdfBlob = pdf.output('blob');
+    const file = new File([pdfBlob], nomeArquivo, { type: 'application/pdf' });
+    if (navigator.canShare && navigator.canShare({ files: [file] }) && !isIOS()) {
+      navigator.share({
+        files: [file],
+        title: 'Recibo TRANS PE',
+        text: 'Segue o recibo em PDF.'
+      }).catch(() => {
+        alert('Não foi possível abrir o menu de compartilhamento. Tente enviar manualmente.');
+      });
+    } else {
+      alert('Seu navegador não suporta compartilhamento direto de arquivos. O PDF foi salvo, envie manualmente pelo WhatsApp.');
+    }
   });
 }
 
