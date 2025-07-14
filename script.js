@@ -207,6 +207,7 @@ if (btnPDF) {
     mostrarMensagemConfirmacao();
     setTimeout(() => {
       document.getElementById('recibo-preview-container').style.display = 'block';
+      limparFormulario();
     }, 2000);
   });
 }
@@ -250,6 +251,7 @@ if (btnCompartilhar) {
     mostrarMensagemConfirmacao('Recibo compartilhado com sucesso!');
     setTimeout(() => {
       document.getElementById('recibo-preview-container').style.display = 'block';
+      limparFormulario();
     }, 2000);
   });
 }
