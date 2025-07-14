@@ -128,7 +128,9 @@ function gerarPDF() {
     }
     pdf.addImage(imgData, 'PNG', 10, 10, pdfWidth, pdfHeight);
     if (isMobile()) {
-      pdf.output('dataurlnewwindow');
+      const blob = pdf.output('blob');
+      const url = URL.createObjectURL(blob);
+      window.open(url, '_blank');
     } else {
       pdf.save(nomeArquivo);
     }

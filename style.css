@@ -137,55 +137,30 @@ main {
   display: flex;
   justify-content: center;
   margin-top: 1.5rem;
+  gap: 1.2rem;
+}
+#gerar-pdf-btn,
+#compartilhar-pdf-btn {
+  font-size: 1.2rem;
+  font-weight: 700;
+  border: none;
+  border-radius: 10px;
+  padding: 1.1rem 2.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.7em;
 }
 #gerar-pdf-btn {
   background: #1976d2;
   color: #fff;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  padding: 1.1rem 2.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
 }
 #gerar-pdf-btn:active {
   background: #1565c0;
 }
-
-#visualizar-recibo-btn {
-  background: #1976d2;
-  color: #fff;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  padding: 1.1rem 2.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
-  margin-bottom: 0.5rem;
-}
-#visualizar-recibo-btn:active {
-  background: #1565c0;
-}
-
 #compartilhar-pdf-btn {
   background: #43b649;
   color: #fff;
-  font-size: 1.2rem;
-  font-weight: 700;
-  border: none;
-  border-radius: 10px;
-  padding: 1.1rem 2.2rem;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  gap: 0.7em;
-  margin-bottom: 0.5rem;
 }
 #compartilhar-pdf-btn:active {
   background: #2e7d32;
@@ -273,7 +248,8 @@ main {
     font-size: 1rem;
     padding: 0.8rem 0.7rem;
   }
-  #gerar-pdf-btn {
+  #gerar-pdf-btn,
+  #compartilhar-pdf-btn {
     font-size: 1rem;
     padding: 0.8rem 1.2rem;
   }
